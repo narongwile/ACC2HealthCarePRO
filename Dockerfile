@@ -4,6 +4,7 @@ FROM node:22-alpine
 WORKDIR .
 # Copy over package.json files
 COPY package*.json ./
+COPY .env .env
 # Install all packages
 RUN npm install
 RUN npm update
@@ -11,8 +12,10 @@ RUN npm update
 COPY . .
 # Build AdonisJS for production
 # RUN npm run build --production
-RUN node ace serve --watch
+RUN npm i -g pm2
+EXPOSE 3333
 
+CMD npm run pm2:start
 
 # # Build final runtime container
 # FROM node:22-alpine
