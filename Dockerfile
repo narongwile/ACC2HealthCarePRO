@@ -39,14 +39,12 @@ RUN npm ci --omit=dev
 # Copy the built application from the builder stage
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/server.js ./server.js
+COPY --from=builder /app/build/server.js ./server.js
 
 # Copy essential AdonisJS runtime directories/files that are not part of `build` output
 COPY --from=builder /app/config ./config
 COPY --from=builder /app/start ./start
 COPY --from=builder /app/providers ./providers
-COPY --from=builder /app/database ./database # If you need migrations or seeders at runtime
-COPY --from=builder /app/env.ts ./env.ts # Copy env.ts if used for configuration
 
 EXPOSE ${PORT}
 
