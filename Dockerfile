@@ -40,6 +40,7 @@ RUN npm ci --omit=dev
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/build/server.js ./server.js
+COPY --from=builder /app/.adonisrc.json ./
 
 # Copy essential AdonisJS runtime directories/files that are not part of `build` output
 COPY --from=builder /app/config ./config
