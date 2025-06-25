@@ -23,10 +23,13 @@ WORKDIR /app
 
 # Set environment variables for production
 ENV NODE_ENV=production
-# ENV ENV_SILENT=true # Disable .env file loading
-ENV HOST=0.0.0.0    # Listen to external network connections
+# Disable .env file loading
+ENV ENV_SILENT=true
+# Listen to external network connections
+ENV HOST=0.0.0.0
 ENV PORT=3333
-ENV CACHE_VIEWS=true # Enable view caching
+# Enable view caching
+ENV CACHE_VIEWS=true
 
 # Copy package.json and package-lock.json for production dependency installation
 COPY package.json package-lock.json ./
