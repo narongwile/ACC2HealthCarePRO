@@ -49,5 +49,5 @@ COPY --from=builder /app/providers ./providers
 
 EXPOSE ${PORT}
 
-# Start the server
-CMD [ "node", "server.js" ] 
+# Start the server using npm start script
+CMD [ "npm", "run", "dev" ] 
