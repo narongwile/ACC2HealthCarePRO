@@ -23,7 +23,7 @@ WORKDIR /app
 
 # Set environment variables for production
 ENV NODE_ENV=production
-ENV ENV_SILENT=true # Disable .env file loading
+# ENV ENV_SILENT=true # Disable .env file loading
 ENV HOST=0.0.0.0    # Listen to external network connections
 ENV PORT=3333
 ENV CACHE_VIEWS=true # Enable view caching
