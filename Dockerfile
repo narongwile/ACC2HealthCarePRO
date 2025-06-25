@@ -2,12 +2,13 @@
 FROM node:22-alpine AS builder
 
 WORKDIR /app
+USER node
 
 # Copy package.json and package-lock.json first to leverage Docker cache
 COPY package.json package-lock.json ./
 
 # Install production and development dependencies
-RUN npm ci
+RUN rm -rf node_modules && npm ci
 
 # Copy the rest of the application source code
 COPY . .
@@ -20,6 +21,7 @@ RUN node ace build --production --ignore-ts-errors
 FROM node:22-alpine AS production
 
 WORKDIR /app
+USER node
 
 # Set environment variables for production
 ENV NODE_ENV=production
