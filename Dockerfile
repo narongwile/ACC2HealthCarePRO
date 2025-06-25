@@ -1,7 +1,7 @@
 # Stage 1: Build the AdonisJS application
 FROM node:22-alpine AS builder
 
-WORKDIR /app
+WORKDIR .
 
 # Copy package.json and package-lock.json first to leverage Docker cache
 COPY package.json package-lock.json ./
@@ -19,7 +19,7 @@ RUN node ace build --production --ignore-ts-errors
 # Stage 2: Create the final runtime image
 FROM node:22-alpine AS production
 
-WORKDIR /app
+WORKDIR .
 
 # Set environment variables for production
 ENV NODE_ENV=production
@@ -47,7 +47,7 @@ COPY --from=builder /app/config ./config
 COPY --from=builder /app/start ./start
 COPY --from=builder /app/providers ./providers
 
-EXPOSE ${PORT}
+EXPOSE 3333
 
 # Start the server using npm start script
 CMD [ "npm", "run", "dev" ] 
