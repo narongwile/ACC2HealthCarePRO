@@ -1,0 +1,70 @@
+@layout('layouts/app')
+
+@section('body')
+  <div class="page-header">
+    <h1>AI Alert Log</h1>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a>
+      <span>></span>
+      <span>AI Alerts</span>
+    </div>
+  </div>
+
+  <div class="ai-alerts-content">
+    <div class="tabs-container card">
+      <div class="tabs">
+        <button class="tab-button active">All Alerts</button>
+        <button class="tab-button">Unresolved</button>
+        <button class="tab-button">Resolved</button>
+      </div>
+      <div class="tab-content">
+        <div class="recent-alerts-full">
+          <div class="alert-row header">
+            <span></span>
+            <span>Patient</span>
+            <span>Risk</span>
+            <span>Date</span>
+            <span>AI Recommendation</span>
+            <span>Sent Via</span>
+            <span>Status</span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="alert-row">
+            <span class="alert-icon-small"><i class="fas fa-caret-up"></i></span>
+            <span>Somchai Prasert</span>
+            <span>High Risk: Blood Sugar</span>
+            <span>2024-06-10 09:15</span>
+            <span>AI: Recommend doctor visit</span>
+            <span>Sent via LINE</span>
+            <span>Unresolved</span>
+            <span class="action-icon"><i class="fas fa-eye"></i></span>
+            <span class="action-icon"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <div class="alert-row">
+            <span class="alert-icon-small"><i class="fas fa-caret-up"></i></span>
+            <span>Nattaya Wong</span>
+            <span>Moderate Risk: Missed Dose</span>
+            <span>2024-06-09 17:40</span>
+            <span>AI: Medication reminder</span>
+            <span>Sent via SMS</span>
+            <span>Resolved</span>
+            <span class="action-icon"><i class="fas fa-eye"></i></span>
+            <span class="action-icon"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <div class="alert-row">
+            <span class="alert-icon-small"><i class="fas fa-caret-up"></i></span>
+            <span>Anan Chaiyaporn</span>
+            <span>High Risk: No recent check-in</span>
+            <span>2024-06-08 14:22</span>
+            <span>AI: Urge follow-up</span>
+            <span>Sent via LINE</span>
+            <span>Unresolved</span>
+            <span class="action-icon"><i class="fas fa-eye"></i></span>
+            <span class="action-icon"><i class="fas fa-check-circle"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection 

@@ -1,0 +1,105 @@
+@layout('layouts/app')
+
+@section('body')
+  <div class="page-header">
+    <h1>Patient Management</h1>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a>
+      <span>></span>
+      <span>Patients</span>
+    </div>
+  </div>
+
+  <div class="patients-content">
+    <div class="filter-patients card">
+      <div class="card-header">Filter Patients</div>
+      <div class="filter-grid">
+        <div class="filter-item">
+          <label for="search-name">Search by name</label>
+          <div class="input-with-icon">
+            <input type="text" id="search-name" placeholder="Enter patient name">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <div class="filter-item">
+          <label for="blood-sugar">Blood Sugar</label>
+          <div class="input-with-icon">
+            <select id="blood-sugar">
+              <option>High only</option>
+            </select>
+            <i class="fas fa-times-circle"></i>
+          </div>
+        </div>
+        <div class="filter-item">
+          <label for="medication">Medication</label>
+          <div class="input-with-icon">
+            <select id="medication">
+              <option>Non-compliant</option>
+            </select>
+            <i class="fas fa-times-circle"></i>
+          </div>
+        </div>
+        <div class="filter-item">
+          <label for="exercise">Exercise</label>
+          <div class="input-with-icon">
+            <select id="exercise">
+              <option>Not exercising</option>
+            </select>
+            <i class="fas fa-dumbbell"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="all-patients card">
+      <div class="card-header">All Patients</div>
+      <div class="patients-table">
+        <div class="patient-row header">
+          <span></span>
+          <span>Name</span>
+          <span>Gender, Age</span>
+          <span>Condition</span>
+          <span>Medication</span>
+          <span>Exercise</span>
+          <span></span>
+        </div>
+        <div class="patient-row">
+          <span class="patient-icon"><i class="fas fa-user"></i></span>
+          <span>Somchai Prasert</span>
+          <span>Male, 58</span>
+          <span>FBS: 210 mg/dL</span>
+          <span>No medication</span>
+          <span>No exercise</span>
+          <span class="view-icon"><i class="fas fa-eye"></i></span>
+        </div>
+        <div class="patient-row">
+          <span class="patient-icon"><i class="fas fa-user"></i></span>
+          <span>Nattaya Wong</span>
+          <span>Female, 62</span>
+          <span>FBS: 180 mg/dL</span>
+          <span>On medication</span>
+          <span>No exercise</span>
+          <span class="view-icon"><i class="fas fa-eye"></i></span>
+        </div>
+        <div class="patient-row">
+          <span class="patient-icon"><i class="fas fa-user"></i></span>
+          <span>Anan Suksan</span>
+          <span>Male, 70</span>
+          <span>FBS: 250 mg/dL</span>
+          <span>No medication</span>
+          <span>No exercise</span>
+          <span class="view-icon"><i class="fas fa-eye"></i></span>
+        </div>
+        <div class="patient-row">
+          <span class="patient-icon"><i class="fas fa-user"></i></span>
+          <span>Pimchanok K.</span>
+          <span>Female, 55</span>
+          <span>FBS: 140 mg/dL</span>
+          <span>On medication</span>
+          <span>Exercise</span>
+          <span class="view-icon"><i class="fas fa-eye"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection 

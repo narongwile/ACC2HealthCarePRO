@@ -1,0 +1,67 @@
+@layout('layouts/app')
+
+@section('body')
+  <div class="page-header">
+    <h1>Visit Schedule</h1>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a>
+      <span>></span>
+      <span>Visits</span>
+    </div>
+  </div>
+
+  <div class="visits-content">
+    <div class="tabs-container card">
+      <div class="tabs">
+        <button class="tab-button active">Upcoming</button>
+        <button class="tab-button">Completed</button>
+      </div>
+      <div class="tab-content">
+        <div class="appointments-list-full">
+          <div class="appointment-row header">
+            <span></span>
+            <span>Patient</span>
+            <span>Address</span>
+            <span>Time</span>
+            <span>Status</span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="appointment-row">
+            <span class="patient-icon"><i class="fas fa-user"></i></span>
+            <span>Somchai P.</span>
+            <span>บ้านเลขที่ 12/3</span>
+            <span>10:00 AM</span>
+            <span>Pending</span>
+            <span class="action-icon"><i class="fas fa-clipboard-check"></i></span>
+            <span class="action-icon"><i class="fas fa-file-alt"></i></span>
+          </div>
+          <div class="appointment-row">
+            <span class="patient-icon"><i class="fas fa-user"></i></span>
+            <span>Nittaya K.</span>
+            <span>บ้านเลขที่ 45/1</span>
+            <span>11:30 AM</span>
+            <span>Pending</span>
+            <span class="action-icon"><i class="fas fa-clipboard-check"></i></span>
+            <span class="action-icon"><i class="fas fa-file-alt"></i></span>
+          </div>
+          <div class="appointment-row">
+            <span class="patient-icon"><i class="fas fa-user"></i></span>
+            <span>Prasit T.</span>
+            <span>บ้านเลขที่ 7/2</span>
+            <span>13:00 PM</span>
+            <span>Pending</span>
+            <span class="action-icon"><i class="fas fa-clipboard-check"></i></span>
+            <span class="action-icon"><i class="fas fa-file-alt"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-note-section card">
+      <div class="card-header">Add Visit Note</div>
+      <textarea placeholder="Enter visit note..."></textarea>
+      <button class="btn btn-primary">Save Note</button>
+    </div>
+  </div>
+@endsection 

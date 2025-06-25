@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  app:
+    # image: registry.gitlab.com/narongwile/smartgaragewebapp:latest
+    container_name: healthcarepro
+    # Build dockerfile
+    build: .
+    # Restart container in case of crashes etc
+    restart: always
+    # Set API to use host networking
+    network_mode: host
+    # API depends on DB to be there
+    # depends_on:
+    #   - db
+    # Set env variables
+    environment:
+      APP_KEY: someverysecretkey
+      APP_NAME: HealthCarePro
+      SESSION_DRIVER: cookie
+      DB_CONNECTION: sqlite
+      SQLITE_FILE: ./tmp/db.sqlite
+
+  web:
+    image: nginx
+    container_name: nginx
+    ports:
+     - "80:80"
+    volumes:
+     - ./nginx/:/etc/nginx/conf.d/
+
+#   db:
+#     # Set DB version to run
+#     image: postgres:13.3-alpine
+#     # Restart container in case of crashes etc
+#     restart: always
+#     # Set DB to use host networking
+#     network_mode: host
+#     # Set DB env variables
+#     environment:
+#       POSTGRES_PASSWORD: example
+#     # Mount DB data to volume, 
+#     # so we don't lose all DB data over deployments
+#     volumes:
+#       - database:/var/lib/postgresql/data
+
+# # Define the DB volume
+# volumes:
+#   database:

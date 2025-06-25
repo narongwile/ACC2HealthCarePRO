@@ -1,0 +1,85 @@
+@layout('layouts/app')
+
+@section('body')
+  <div class="page-header">
+    <h1>Patient Trends</h1>
+  </div>
+
+  <div class="dashboard-content">
+    <div class="patient-trends-chart card">
+      <canvas id="patientTrendsChart"></canvas>
+      <div class="chart-labels">
+        <span>Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="card alert-card">
+        <div class="card-header">
+          <span class="icon-wrapper"><i class="fas fa-exclamation-circle"></i></span> Alerts
+        </div>
+        <h2 class="alert-status">High-Risk Patients</h2>
+        <p class="alert-details">5 patients need urgent review. Click to view details.</p>
+        <div class="card-actions">
+          <button class="btn btn-primary">View Alerts</button>
+          <button class="btn btn-secondary">Acknowledge</button>
+        </div>
+      </div>
+
+      <div class="card appointments-card">
+        <div class="card-header">
+          <span class="icon-wrapper"><i class="fas fa-calendar-alt"></i></span> Visits
+        </div>
+        <h2 class="alert-status">Today's Appointments</h2>
+        <p>8 scheduled home visits. 2 pending completion.</p>
+        <div class="appointments-list">
+          {{-- Appointments will be listed here --}}
+        </div>
+        <button class="btn btn-primary view-schedule-btn">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="quick-actions card">
+      <div class="card-header">
+        Quick Actions
+      </div>
+      <div class="action-buttons">
+        <button class="btn btn-primary">Add Patient</button>
+        <button class="btn btn-primary">Export Report</button>
+        <button class="btn btn-primary">Send Alert</button>
+      </div>
+    </div>
+
+    <div class="recent-alerts card">
+      <div class="card-header">
+        Recent AI Alerts
+      </div>
+      <div class="alerts-table">
+        <div class="alert-item">
+          <span class="alert-icon-small"><i class="fas fa-caret-up"></i></span>
+          <span>Somchai P.</span>
+          <span>Critical sugar spike</span>
+          <span>AI: Immediate review</span>
+          <span>2 min ago</span>
+          <span class="arrow-right"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="alert-item">
+          <span class="alert-icon-small"><i class="fas fa-caret-up"></i></span>
+          <span>Nida T.</span>
+          <span>Missed medication</span>
+          <span>AI: Schedule visit</span>
+          <span>10 min ago</span>
+          <span class="arrow-right"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="alert-item">
+          <span class="alert-icon-small"><i class="fas fa-caret-up"></i></span>
+          <span>Wasan K.</span>
+          <span>High risk trend</span>
+          <span>AI: Monitor closely</span>
+          <span>30 min ago</span>
+          <span class="arrow-right"><i class="fas fa-chevron-right"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection 

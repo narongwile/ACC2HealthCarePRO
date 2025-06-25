@@ -1,0 +1,65 @@
+@layout('layouts/app')
+
+@section('body')
+  <div class="page-header">
+    <h1>รายงานและเอกสารวิเคราะห์ความเสี่ยง</h1>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a>
+      <span>></span>
+      <span>Reports</span>
+    </div>
+  </div>
+
+  <div class="reports-content">
+    <div class="tabs-container card">
+      <div class="tabs">
+        <button class="tab-button active">ทั้งหมด</button>
+        <button class="tab-button">สำหรับเจ้าหน้าที่</button>
+        <button class="tab-button">สำหรับ อสม.</button>
+        <button class="tab-button">สำหรับแพทย์/พยาบาล</button>
+      </div>
+      <div class="tab-content">
+        <div class="recent-reports-grid">
+          <div class="report-card card">
+            <div class="icon-wrapper"><i class="fas fa-file-alt"></i></div>
+            <h3>วิเคราะห์ความเสี่ยง รายงานความเสี่ยงของผู้ป่วยเบาหวาน</h3>
+            <p>สรุปความเสี่ยงและข้อเสนอแนะสำหรับผู้ป่วยแต่ละราย</p>
+            <button class="btn btn-primary">ดูรายงาน</button>
+          </div>
+          <div class="report-card card">
+            <div class="icon-wrapper"><i class="fas fa-file-alt"></i></div>
+            <h3>สำหรับเจ้าหน้าที่ สรุปผลตรวจสุขภาพ</h3>
+            <p>รายงานผลการตรวจสุขภาพล่าสุด และแนวโน้มสุขภาพ</p>
+            <button class="btn btn-primary">ดาวน์โหลด</button>
+          </div>
+          <div class="report-card card">
+            <div class="icon-wrapper"><i class="fas fa-file-alt"></i></div>
+            <h3>สำหรับ อสม. รายชื่อผู้ป่วยเสี่ยง</h3>
+            <p>รายชื่อและข้อมูลติดต่อผู้ป่วยที่ต้องติดตาม</p>
+            <button class="btn btn-primary">ดูรายละเอียด</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="download-history card">
+      <div class="card-header">ประวัติการดาวน์โหลด</div>
+      <div class="history-list">
+        <div class="history-item">
+          <i class="fas fa-file-alt"></i>
+          <span>รายงานความเสี่ยง เจ้าหน้าที่</span>
+          <span>12 มิ.ย. 2024</span>
+          <span class="status">ดาวน์โหลดแล้ว</span>
+          <a href="#" class="action-icon"><i class="fas fa-download"></i></a>
+        </div>
+        <div class="history-item">
+          <i class="fas fa-file-alt"></i>
+          <span>รายชื่อผู้ป่วยเสี่ยง อสม.</span>
+          <span>10 มิ.ย. 2024</span>
+          <span class="status">ดาวน์โหลดแล้ว</span>
+          <a href="#" class="action-icon"><i class="fas fa-download"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection 

@@ -1,0 +1,57 @@
+@layout('layouts/app')
+
+@section('body')
+  <div class="page-header">
+    <h1>Chat & Message</h1>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a>
+      <span>></span>
+      <span>Chat</span>
+    </div>
+  </div>
+
+  <div class="chat-content">
+    <div class="tabs-container card">
+      <div class="tabs">
+        <button class="tab-button active">LINE</button>
+        <button class="tab-button">SMS</button>
+      </div>
+      <div class="tab-content">
+        <div class="send-reminder-section">
+          <div class="card-header">Send Reminder</div>
+          <div class="form-group">
+            <label for="patient-name">Patient Name</label>
+            <div class="input-with-icon">
+              <input type="text" id="patient-name" placeholder="Search or select patient">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Type your message"></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary">Send</button>
+            <button class="btn btn-secondary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="patient-qna card">
+      <div class="card-header">Patient Q&A</div>
+      <div class="qna-list">
+        <div class="qna-item">
+          <p class="question">How to take medicine?</p>
+          <p class="patient-name-qna">Patient: Somchai S.</p>
+          <span class="action-icon"><i class="fas fa-reply"></i></span>
+        </div>
+        <div class="qna-item">
+          <p class="question">Can I eat fruit?</p>
+          <p class="patient-name-qna">Patient: Malee T.</p>
+          <span class="action-icon"><i class="fas fa-reply"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection 
