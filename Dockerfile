@@ -3,6 +3,9 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+# Install build dependencies for native modules
+RUN apk add --no-cache python3 make g++
+
 # Copy package.json and package-lock.json first to leverage Docker cache
 COPY package.json package-lock.json ./
 
@@ -20,6 +23,9 @@ RUN node ace build --production --ignore-ts-errors
 FROM node:22-alpine AS production
 
 WORKDIR /app
+
+# Install build dependencies for native modules (needed for npm ci if native modules are present)
+RUN apk add --no-cache python3 make g++
 
 # Set environment variables for production
 ENV NODE_ENV=production
