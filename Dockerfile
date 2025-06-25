@@ -50,4 +50,4 @@ COPY --from=builder /app/providers ./providers
 EXPOSE 3333
 
 # Start the server using npm start script
-CMD [ "npm", "run", "dev" ] 
+CMD [ "npm", "start" ] 
