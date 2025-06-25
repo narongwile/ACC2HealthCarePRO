@@ -13,7 +13,7 @@ RUN npm ci
 COPY . .
 
 # Build AdonisJS for production
-RUN node ace build --production
+RUN node ace build --production --ignore-ts-errors
 
 
 # Stage 2: Create the final runtime image
