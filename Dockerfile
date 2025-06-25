@@ -11,7 +11,7 @@ RUN npm update
 COPY . .
 # Build AdonisJS for production
 # RUN npm run build --production
-RUN npm run build
+RUN node ace serve --watch
 
 
 # Build final runtime container
