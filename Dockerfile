@@ -4,7 +4,6 @@ FROM node:22-alpine
 WORKDIR .
 # Copy over package.json files
 COPY package*.json ./
-COPY .env .env
 # Install all packages
 RUN npm install
 RUN npm update
