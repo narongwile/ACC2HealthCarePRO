@@ -46,7 +46,7 @@ COPY --from=builder /app/config ./config
 COPY --from=builder /app/start ./start
 COPY --from=builder /app/providers ./providers
 COPY --from=builder /app/database ./database # If you need migrations or seeders at runtime
-COPY --from=builder /app/env.ts ./env.ts # Copy env.ts if it's used for configuration
+COPY --from=builder /app/env.ts ./env.ts # Copy env.ts if used for configuration
 
 EXPOSE ${PORT}
 
