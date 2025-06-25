@@ -28,16 +28,22 @@ ENV HOST=0.0.0.0    # Listen to external network connections
 ENV PORT=3333
 ENV CACHE_VIEWS=true # Enable view caching
 
-# Copy only the necessary production dependencies from the builder stage
-COPY --from=builder /app/package.json /app/package-lock.json ./
+# Copy package.json and package-lock.json for production dependency installation
+COPY package.json package-lock.json ./
+# Install only production dependencies
 RUN npm ci --omit=dev
 
 # Copy the built application from the builder stage
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/server.js ./server.js
-COPY --from=builder /app/ace ./ace
+
+# Copy essential AdonisJS runtime directories/files that are not part of `build` output
+COPY --from=builder /app/config ./config
+COPY --from=builder /app/start ./start
+COPY --from=builder /app/providers ./providers
+COPY --from=builder /app/database ./database # If you need migrations or seeders at runtime
+COPY --from=builder /app/env.ts ./env.ts # Copy env.ts if it's used for configuration
 
 EXPOSE ${PORT}
 
