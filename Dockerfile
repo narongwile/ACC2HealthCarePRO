@@ -10,13 +10,14 @@ RUN npm update
 # Copy over source code
 COPY . .
 # Build AdonisJS for production
-RUN npm run build --production
+# RUN npm run build --production
+RUN npm run build --development
 
 
 # Build final runtime container
 FROM node:22-alpine
 # Set environment variables
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 # Disable .env file loading
 ENV ENV_SILENT=true
 # Listen to external network connections
