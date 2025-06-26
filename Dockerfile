@@ -1,59 +1,26 @@
-# Stage 1: Build the AdonisJS application
-FROM node:22-alpine AS builder
+ARG NODE_IMAGE=node:16.13.1-alpine
 
-WORKDIR /app
+FROM $NODE_IMAGE AS base
+RUN apk --no-cache add dumb-init
+RUN mkdir -p app && chown node:node app
+WORKDIR app
+USER node
+RUN mkdir tmp
 
-# Install build dependencies for native modules
-RUN apk add --no-cache python3 make g++
-
-# Copy package.json and package-lock.json first to leverage Docker cache
-COPY package.json package-lock.json ./
-
-# Install production and development dependencies
+FROM base AS dependencies
+COPY --chown=node:node ./package*.json ./
 RUN npm ci
+COPY --chown=node:node . .
 
-# Copy the rest of the application source code
-COPY . .
+FROM dependencies AS build
+RUN node ace build --production
 
-# Build AdonisJS for production
-RUN node ace build --production --ignore-ts-errors
-
-
-# Stage 2: Create the final runtime image
-FROM node:22-alpine AS production
-
-WORKDIR /app
-
-# Install build dependencies for native modules (needed for npm ci if native modules are present)
-RUN apk add --no-cache python3 make g++
-
-# Set environment variables for production
+FROM base AS production
 ENV NODE_ENV=production
-# Disable .env file loading
-ENV ENV_SILENT=true
-# Listen to external network connections
+ENV PORT=$PORT
 ENV HOST=0.0.0.0
-ENV PORT=3333
-# Enable view caching
-ENV CACHE_VIEWS=true
-
-# Copy package.json and package-lock.json for production dependency installation
-COPY package.json package-lock.json ./
-# Install only production dependencies
-RUN npm ci --omit=dev
-
-# Copy the built application from the builder stage
-COPY --from=builder /app/build ./build
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/build/server.js ./server.js
-COPY --from=builder /app/.adonisrc.json ./
-
-# Copy essential AdonisJS runtime directories/files that are not part of `build` output
-COPY --from=builder /app/config ./config
-COPY --from=builder /app/start ./start
-COPY --from=builder /app/providers ./providers
-
-EXPOSE 3333
-
-# Start the server using npm start script
-CMD [ "npm", "start" ] 
+COPY --chown=node:node ./package*.json ./
+RUN npm ci --production
+COPY --chown=node:node --from=build app/build .
+EXPOSE $PORT
+CMD [ "dumb-init", "node", "server.js" ]
