@@ -2,20 +2,18 @@ version: '3.0'
 
 services:
   adonis_app:
-    container_name: adonis_app
+    container_name: healthcareproapp
     restart: always
     build:
       context: .
       target: dependencies
     environment:
+      PORT: 3333
       APP_KEY: someverysecretkey
       APP_NAME: HealthCarePro
       SESSION_DRIVER: cookie
       DB_CONNECTION: sqlite
       SQLITE_FILE: ./tmp/db.sqlite
-    ports:
-      - ${PORT}:${PORT}
-      - 9229:9229
     # env_file:
     #   - .env
     volumes:
